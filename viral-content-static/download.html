@@ -8,8 +8,196 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     
     <style>
-        /* [OMISSIS - Codice CSS] */
-        /* ... tutto il tuo codice CSS ... */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .download-container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .success-icon {
+            font-size: 4rem;
+            color: #28a745;
+            margin-bottom: 1rem;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 2rem;
+        }
+        
+        .download-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .guide-preview {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+        
+        .guide-icon {
+            font-size: 3rem;
+            color: #667eea;
+        }
+        
+        .guide-info h3 {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .guide-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .download-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+            min-width: 200px;
+        }
+        
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .download-btn:active {
+            transform: translateY(0);
+        }
+        
+        .bonus-section {
+            background: #fff3cd;
+            border: 2px solid #ffeaa7;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .bonus-title {
+            color: #856404;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .bonus-list {
+            text-align: left;
+            color: #856404;
+        }
+        
+        .bonus-list li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .back-home {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-home:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+        }
+        
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+        
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .lang-switch:hover {
+            background: white;
+        }
+        
+        @media (max-width: 768px) {
+            .download-container {
+                padding: 2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .guide-preview {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .download-btn {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -78,7 +266,7 @@
                 <ul class="bonus-list">
                     <li>✨ 50+ analyzed viral content examples</li>
                     <li>📊 Metrics analysis templates</li>
-                    <li>🎯 Checklist per each social platform</li>
+                    <li>🎯 Checklist for each social platform</li>
                     <li>💡 Creative ideas generator</li>
                     <li>📅 Optimized editorial calendar</li>
                 </ul>
@@ -93,19 +281,55 @@
     </div>
 
     <script>
-      // *** ATTENZIONE: MODIFICA QUESTI VALORI ***
-      // Inserisci il valore esatto della tua guida (es. 49.00) e la valuta (es. 'EUR' o 'USD')
       fbq('track', 'Purchase', {
         value: 29.00,
-        currency: 'EUR' 
+        currency: 'EUR'
       });
-      // *****************************************
     </script>
     <script>
         // Language switching functionality
         let currentLang = 'it';
-        // ... (resto del tuo codice JavaScript per la lingua)
-        // ...
+
+        function switchLanguage() {
+            currentLang = currentLang === 'it' ? 'en' : 'it';
+            
+            // Hide all language content
+            document.querySelectorAll('.lang-it, .lang-en').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show current language content
+            document.querySelectorAll(`.lang-${currentLang}`).forEach(el => {
+                el.style.display = el.classList.contains('lang-content') ? 'block' : 'inline';
+            });
+            
+            // Update page language attribute
+            document.documentElement.lang = currentLang;
+            
+            // Update title
+            const title = currentLang === 'it' 
+                ? 'Download - ViralGuide'
+                : 'Download - ViralGuide';
+            document.title = title;
+        }
+
+        // Initialize language based on URL parameter
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lang = urlParams.get('lang');
+            
+            if (lang === 'en') {
+                switchLanguage();
+            }
+            
+            // Track download events
+            document.querySelectorAll('.download-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // You can add analytics tracking here
+                    console.log('Guide downloaded:', this.href);
+                });
+            });
+        });
     </script>
 </body>
 </html>
