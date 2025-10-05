@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://viral-content.netlify.app/sitemap.xml

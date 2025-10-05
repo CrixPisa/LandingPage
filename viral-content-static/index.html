@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ViralGuide - Guida Completa alla Creazione di Contenuti Virali per i Social Media</title>
+    <meta name="description" content="Scopri i segreti per creare contenuti virali sui social media. Guida completa con strategie testate per Facebook, Instagram, TikTok, LinkedIn e YouTube.">
+    <meta name="keywords" content="contenuti virali, social media marketing, marketing digitale, Facebook, Instagram, TikTok, LinkedIn, YouTube">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="ViralGuide - Guida Completa alla Creazione di Contenuti Virali">
+    <meta property="og:description" content="Scopri i segreti per creare contenuti virali sui social media">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://viral-content.netlify.app/">
+    <meta property="og:image" content="assets/landing_page_hero.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="ViralGuide - Guida Completa alla Creazione di Contenuti Virali">
+    <meta name="twitter:description" content="Scopri i segreti per creare contenuti virali sui social media">
+    <meta name="twitter:image" content="assets/landing_page_hero.png">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        .lang-switch {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        
+        .lang-switch:hover {
+            background: #5a67d8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            margin: 2rem 0;
+        }
+        
+        /* Features Section */
+        .features {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .pricing h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .price-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        
+        .price-description {
+            color: #666;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        .payment-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        
+        .payment-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 200px;
+        }
+        
+        .payment-btn:hover {
+            background: #5a67d8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .payment-btn.stripe {
+            background: #6772e5;
+        }
+        
+        .payment-btn.stripe:hover {
+            background: #5469d4;
+        }
+        
+        /* Footer */
+        .footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #667eea;
+        }
+        
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            z-index: 1001;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        
+        .cookie-banner p {
+            margin-bottom: 1rem;
+        }
+        
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cookie-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .cookie-button:hover {
+            background: #5a67d8;
+        }
+        
+        .cookie-button.accept-all {
+            background: #28a745;
+        }
+        
+        .cookie-button.reject-all {
+            background: #dc3545;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1002;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .payment-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cookie-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        /* Hidden content for different languages */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">ViralGuide</div>
+            <div class="nav-links">
+                <a href="#features" class="lang-it">Caratteristiche</a>
+                <a href="#features" class="lang-en" style="display: none;">Features</a>
+                <a href="#pricing" class="lang-it">Prezzo</a>
+                <a href="#pricing" class="lang-en" style="display: none;">Pricing</a>
+                <a href="javascript:void(0)" onclick="openModal('privacy-modal')" class="lang-it">Privacy</a>
+                <a href="javascript:void(0)" onclick="openModal('privacy-modal')" class="lang-en" style="display: none;">Privacy</a>
+                <button class="lang-switch" onclick="switchLanguage()">
+                    <span class="lang-it">🇬🇧 English</span>
+                    <span class="lang-en" style="display: none;">🇮🇹 Italiano</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <!-- Italian Content -->
+            <div class="lang-content lang-it active">
+                <h1>Crea Contenuti Virali che Conquistano i Social Media</h1>
+                <p class="subtitle">La guida completa per trasformare i tuoi post in fenomeni virali su Facebook, Instagram, TikTok, LinkedIn e YouTube</p>
+            </div>
+            
+            <!-- English Content -->
+            <div class="lang-content lang-en">
+                <h1>Create Viral Content that Conquers Social Media</h1>
+                <p class="subtitle">The complete guide to transform your posts into viral phenomena on Facebook, Instagram, TikTok, LinkedIn and YouTube</p>
+            </div>
+            
+            <img src="assets/landing_page_hero.png" alt="Viral Content Guide" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <!-- Italian Content -->
+            <div class="lang-content lang-it active">
+                <h2>Cosa Imparerai</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Strategie Testate</h3>
+                        <p>Tecniche comprovate utilizzate dai migliori content creator per ottenere milioni di visualizzazioni e condivisioni.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Multi-Piattaforma</h3>
+                        <p>Strategie specifiche per Facebook, Instagram, TikTok, LinkedIn e YouTube, adattate alle peculiarità di ogni piattaforma.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Crescita Rapida</h3>
+                        <p>Metodi per accelerare la crescita del tuo seguito e aumentare l'engagement in modo organico e sostenibile.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3>Psicologia Virale</h3>
+                        <p>Comprendi i meccanismi psicologici che spingono le persone a condividere contenuti e come sfruttarli eticamente.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Analytics e Metriche</h3>
+                        <p>Impara a leggere e interpretare le metriche per ottimizzare continuamente le tue performance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Creatività Strategica</h3>
+                        <p>Tecniche per generare idee creative che catturano l'attenzione e stimolano l'interazione del pubblico.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- English Content -->
+            <div class="lang-content lang-en">
+                <h2>What You'll Learn</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>Tested Strategies</h3>
+                        <p>Proven techniques used by top content creators to achieve millions of views and shares.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📱</div>
+                        <h3>Multi-Platform</h3>
+                        <p>Specific strategies for Facebook, Instagram, TikTok, LinkedIn and YouTube, adapted to each platform's unique features.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🚀</div>
+                        <h3>Rapid Growth</h3>
+                        <p>Methods to accelerate your follower growth and increase engagement organically and sustainably.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3>Viral Psychology</h3>
+                        <p>Understand the psychological mechanisms that drive people to share content and how to leverage them ethically.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📊</div>
+                        <h3>Analytics & Metrics</h3>
+                        <p>Learn to read and interpret metrics to continuously optimize your performance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3>Strategic Creativity</h3>
+                        <p>Techniques to generate creative ideas that capture attention and stimulate audience interaction.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <!-- Italian Content -->
+            <div class="lang-content lang-it active">
+                <h2>Ottieni la Tua Guida Ora</h2>
+                <div class="price-card">
+                    <div class="price">€29</div>
+                    <p class="price-description">Guida completa in formato PDF con oltre 50 pagine di contenuti esclusivi, strategie dettagliate e casi studio reali.</p>
+                    <div class="payment-buttons">
+                        <button class="payment-btn" onclick="redirectToPayPal()">
+                            💳 Paga con PayPal
+                        </button>
+                        <button class="payment-btn stripe" onclick="redirectToStripe()">
+                            💳 Paga con Carta
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- English Content -->
+            <div class="lang-content lang-en">
+                <h2>Get Your Guide Now</h2>
+                <div class="price-card">
+                    <div class="price">€29</div>
+                    <p class="price-description">Complete guide in PDF format with over 50 pages of exclusive content, detailed strategies and real case studies.</p>
+                    <div class="payment-buttons">
+                        <button class="payment-btn" onclick="redirectToPayPal()">
+                            💳 Pay with PayPal
+                        </button>
+                        <button class="payment-btn stripe" onclick="redirectToStripe()">
+                            💳 Pay with Card
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="javascript:void(0)" onclick="openModal('privacy-modal')" class="lang-it">Privacy Policy</a>
+                <a href="javascript:void(0)" onclick="openModal('privacy-modal')" class="lang-en" style="display: none;">Privacy Policy</a>
+                <a href="javascript:void(0)" onclick="openModal('terms-modal')" class="lang-it">Termini di Servizio</a>
+                <a href="javascript:void(0)" onclick="openModal('terms-modal')" class="lang-en" style="display: none;">Terms of Service</a>
+                <a href="javascript:void(0)" onclick="openModal('cookie-modal')" class="lang-it">Cookie Policy</a>
+                <a href="javascript:void(0)" onclick="openModal('cookie-modal')" class="lang-en" style="display: none;">Cookie Policy</a>
+            </div>
+            <p class="lang-it">&copy; 2024 ViralGuide. Tutti i diritti riservati.</p>
+            <p class="lang-en" style="display: none;">&copy; 2024 ViralGuide. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Cookie Banner -->
+    <div class="cookie-banner" id="cookie-banner">
+        <div class="container">
+            <p class="lang-it">Utilizziamo i cookie per migliorare la tua esperienza sul nostro sito. Continuando a navigare, accetti la nostra Cookie Policy.</p>
+            <p class="lang-en" style="display: none;">We use cookies to improve your experience on our site. By continuing to browse, you accept our Cookie Policy.</p>
+            <div class="cookie-buttons">
+                <button class="cookie-button accept-all" onclick="acceptCookies()">
+                    <span class="lang-it">Accetta Tutti</span>
+                    <span class="lang-en" style="display: none;">Accept All</span>
+                </button>
+                <button class="cookie-button" onclick="openModal('cookie-modal')">
+                    <span class="lang-it">Personalizza</span>
+                    <span class="lang-en" style="display: none;">Customize</span>
+                </button>
+                <button class="cookie-button reject-all" onclick="rejectCookies()">
+                    <span class="lang-it">Rifiuta</span>
+                    <span class="lang-en" style="display: none;">Reject</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('privacy-modal')">&times;</span>
+            
+            <!-- Italian Privacy Policy -->
+            <div class="lang-content lang-it active">
+                <h2>Privacy Policy</h2>
+                <p><strong>Ultimo aggiornamento:</strong> 5 Ottobre 2024</p>
+                
+                <h3>1. Informazioni che raccogliamo</h3>
+                <p>Raccogliamo informazioni quando visiti il nostro sito web, effettui un acquisto o interagisci con i nostri servizi.</p>
+                
+                <h3>2. Come utilizziamo le tue informazioni</h3>
+                <p>Utilizziamo le informazioni raccolte per processare i pagamenti, fornire i nostri servizi e migliorare l'esperienza utente.</p>
+                
+                <h3>3. Condivisione delle informazioni</h3>
+                <p>Non vendiamo, scambiamo o trasferiamo le tue informazioni personali a terzi senza il tuo consenso, eccetto per fornire i servizi richiesti.</p>
+                
+                <h3>4. Sicurezza dei dati</h3>
+                <p>Implementiamo misure di sicurezza appropriate per proteggere le tue informazioni personali.</p>
+                
+                <h3>5. I tuoi diritti</h3>
+                <p>Hai il diritto di accedere, correggere o eliminare le tue informazioni personali. Contattaci per esercitare questi diritti.</p>
+            </div>
+            
+            <!-- English Privacy Policy -->
+            <div class="lang-content lang-en">
+                <h2>Privacy Policy</h2>
+                <p><strong>Last updated:</strong> October 5, 2024</p>
+                
+                <h3>1. Information we collect</h3>
+                <p>We collect information when you visit our website, make a purchase, or interact with our services.</p>
+                
+                <h3>2. How we use your information</h3>
+                <p>We use the collected information to process payments, provide our services, and improve user experience.</p>
+                
+                <h3>3. Information sharing</h3>
+                <p>We do not sell, trade, or transfer your personal information to third parties without your consent, except to provide requested services.</p>
+                
+                <h3>4. Data security</h3>
+                <p>We implement appropriate security measures to protect your personal information.</p>
+                
+                <h3>5. Your rights</h3>
+                <p>You have the right to access, correct, or delete your personal information. Contact us to exercise these rights.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('terms-modal')">&times;</span>
+            
+            <!-- Italian Terms -->
+            <div class="lang-content lang-it active">
+                <h2>Termini di Servizio</h2>
+                <p><strong>Ultimo aggiornamento:</strong> 5 Ottobre 2024</p>
+                
+                <h3>1. Accettazione dei termini</h3>
+                <p>Utilizzando questo sito web, accetti questi termini di servizio.</p>
+                
+                <h3>2. Uso del servizio</h3>
+                <p>Puoi utilizzare i nostri servizi solo per scopi legali e in conformità con questi termini.</p>
+                
+                <h3>3. Proprietà intellettuale</h3>
+                <p>Tutti i contenuti di questo sito sono protetti da copyright e altri diritti di proprietà intellettuale.</p>
+                
+                <h3>4. Limitazione di responsabilità</h3>
+                <p>Non siamo responsabili per danni indiretti o consequenziali derivanti dall'uso dei nostri servizi.</p>
+                
+                <h3>5. Modifiche ai termini</h3>
+                <p>Ci riserviamo il diritto di modificare questi termini in qualsiasi momento.</p>
+            </div>
+            
+            <!-- English Terms -->
+            <div class="lang-content lang-en">
+                <h2>Terms of Service</h2>
+                <p><strong>Last updated:</strong> October 5, 2024</p>
+                
+                <h3>1. Acceptance of terms</h3>
+                <p>By using this website, you accept these terms of service.</p>
+                
+                <h3>2. Use of service</h3>
+                <p>You may use our services only for lawful purposes and in accordance with these terms.</p>
+                
+                <h3>3. Intellectual property</h3>
+                <p>All content on this site is protected by copyright and other intellectual property rights.</p>
+                
+                <h3>4. Limitation of liability</h3>
+                <p>We are not responsible for indirect or consequential damages arising from the use of our services.</p>
+                
+                <h3>5. Changes to terms</h3>
+                <p>We reserve the right to modify these terms at any time.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cookie Policy Modal -->
+    <div id="cookie-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('cookie-modal')">&times;</span>
+            
+            <!-- Italian Cookie Policy -->
+            <div class="lang-content lang-it active">
+                <h2>Cookie Policy</h2>
+                <p><strong>Ultimo aggiornamento:</strong> 5 Ottobre 2024</p>
+                
+                <h3>Cosa sono i cookie</h3>
+                <p>I cookie sono piccoli file di testo che vengono memorizzati sul tuo dispositivo quando visiti un sito web.</p>
+                
+                <h3>Come utilizziamo i cookie</h3>
+                <p>Utilizziamo i cookie per:</p>
+                <ul>
+                    <li>Migliorare l'esperienza utente</li>
+                    <li>Analizzare il traffico del sito</li>
+                    <li>Personalizzare i contenuti</li>
+                    <li>Fornire funzionalità dei social media</li>
+                </ul>
+                
+                <h3>Tipi di cookie</h3>
+                <p><strong>Cookie necessari:</strong> Essenziali per il funzionamento del sito</p>
+                <p><strong>Cookie analitici:</strong> Ci aiutano a capire come i visitatori utilizzano il sito</p>
+                <p><strong>Cookie di marketing:</strong> Utilizzati per mostrare annunci pertinenti</p>
+                
+                <h3>Gestione dei cookie</h3>
+                <p>Puoi gestire le tue preferenze sui cookie attraverso le impostazioni del tuo browser.</p>
+            </div>
+            
+            <!-- English Cookie Policy -->
+            <div class="lang-content lang-en">
+                <h2>Cookie Policy</h2>
+                <p><strong>Last updated:</strong> October 5, 2024</p>
+                
+                <h3>What are cookies</h3>
+                <p>Cookies are small text files that are stored on your device when you visit a website.</p>
+                
+                <h3>How we use cookies</h3>
+                <p>We use cookies to:</p>
+                <ul>
+                    <li>Improve user experience</li>
+                    <li>Analyze site traffic</li>
+                    <li>Personalize content</li>
+                    <li>Provide social media functionality</li>
+                </ul>
+                
+                <h3>Types of cookies</h3>
+                <p><strong>Necessary cookies:</strong> Essential for site functionality</p>
+                <p><strong>Analytics cookies:</strong> Help us understand how visitors use the site</p>
+                <p><strong>Marketing cookies:</strong> Used to show relevant advertisements</p>
+                
+                <h3>Cookie management</h3>
+                <p>You can manage your cookie preferences through your browser settings.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language switching functionality
+        let currentLang = 'it';
+
+        function switchLanguage() {
+            currentLang = currentLang === 'it' ? 'en' : 'it';
+            
+            // Hide all language content
+            document.querySelectorAll('.lang-it, .lang-en').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Show current language content
+            document.querySelectorAll(`.lang-${currentLang}`).forEach(el => {
+                el.style.display = el.classList.contains('lang-content') ? 'block' : 'inline';
+            });
+            
+            // Update page language attribute
+            document.documentElement.lang = currentLang;
+            
+            // Update meta tags
+            const title = currentLang === 'it' 
+                ? 'ViralGuide - Guida Completa alla Creazione di Contenuti Virali per i Social Media'
+                : 'ViralGuide - Complete Guide to Creating Viral Social Media Content';
+            document.title = title;
+            
+            const description = currentLang === 'it'
+                ? 'Scopri i segreti per creare contenuti virali sui social media. Guida completa con strategie testate per Facebook, Instagram, TikTok, LinkedIn e YouTube.'
+                : 'Discover the secrets to creating viral social media content. Complete guide with tested strategies for Facebook, Instagram, TikTok, LinkedIn and YouTube.';
+            document.querySelector('meta[name="description"]').content = description;
+        }
+
+        // Cookie management
+        function showCookieBanner() {
+            const banner = document.getElementById('cookie-banner');
+            if (!localStorage.getItem('cookieConsent')) {
+                banner.classList.add('show');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookieConsent', 'accepted');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+
+        function rejectCookies() {
+            localStorage.setItem('cookieConsent', 'rejected');
+            document.getElementById('cookie-banner').classList.remove('show');
+        }
+
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        // Payment functionality
+        function redirectToPayPal() {
+            const lang = currentLang;
+            // Store language preference for return
+            localStorage.setItem('selectedLang', lang);
+            
+            // PayPal payment link with return URL
+            const returnUrl = encodeURIComponent(`${window.location.origin}/download.html?lang=${lang}&payment=success`);
+            const cancelUrl = encodeURIComponent(`${window.location.origin}/index.html?payment=cancelled`);
+            
+            // Open PayPal payment page
+            window.open('https://www.paypal.com/ncp/payment/MDA7QSJQPVKN4', '_blank');
+            
+            // Show payment instructions
+            showPaymentInstructions('paypal', lang);
+        }
+
+        function redirectToStripe() {
+            const lang = currentLang;
+            // Store language preference for return
+            localStorage.setItem('selectedLang', lang);
+            
+            // Stripe payment link with return URL
+            const returnUrl = encodeURIComponent(`${window.location.origin}/download.html?lang=${lang}&payment=success`);
+            const cancelUrl = encodeURIComponent(`${window.location.origin}/index.html?payment=cancelled`);
+            
+            // Open Stripe payment page
+            window.open('https://buy.stripe.com/4gM7sL9VsegGbid9AA', '_blank');
+            
+            // Show payment instructions
+            showPaymentInstructions('stripe', lang);
+        }
+
+        function showPaymentInstructions(provider, lang) {
+            const message = lang === 'it' 
+                ? `Pagamento in corso con ${provider}. Dopo aver completato il pagamento, tornerai automaticamente alla pagina di download.`
+                : `Payment in progress with ${provider}. After completing the payment, you will automatically return to the download page.`;
+            
+            // Create a temporary notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #28a745;
+                color: white;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                z-index: 10000;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+                text-align: center;
+                max-width: 400px;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Remove notification after 5 seconds
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 5000);
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial language
+            switchLanguage();
+            switchLanguage(); // Call twice to reset to Italian
+            
+            // Show cookie banner
+            setTimeout(showCookieBanner, 1000);
+            
+            // Close modals when clicking outside
+            window.onclick = function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
