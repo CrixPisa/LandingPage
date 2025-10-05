@@ -764,128 +764,126 @@
             });
             
             // Update page language attribute
-            document.documentElement.lang = currentLang;
-            
-            // Update meta tags
-            const title = currentLang === 'it' 
-                ? 'ViralGuide - Guida Completa alla Creazione di Contenuti Virali per i Social Media'
-                : 'ViralGuide - Complete Guide to Creating Viral Social Media Content';
-            document.title = title;
-            
-            const description = currentLang === 'it'
-                ? 'Scopri i segreti per creare contenuti virali sui social media. Guida completa con strategie testate per Facebook, Instagram, TikTok, LinkedIn e YouTube.'
-                : 'Discover the secrets to creating viral social media content. Complete guide with tested strategies for Facebook, Instagram, TikTok, LinkedIn and YouTube.';
-            document.querySelector('meta[name="description"]').content = description;
-        }
+        document.documentElement.lang = currentLang;
+        
+        // Update meta tags
+        const title = currentLang === 'it' 
+            ? 'ViralGuide - Guida Completa alla Creazione di Contenuti Virali per i Social Media'
+            : 'ViralGuide - Complete Guide to Creating Viral Social Media Content';
+        document.title = title;
+        
+        const description = currentLang === 'it'
+            ? 'Scopri i segreti per creare contenuti virali sui social media. Guida completa con strategie testate per Facebook, Instagram, TikTok, LinkedIn e YouTube.'
+            : 'Discover the secrets to creating viral social media content. Complete guide with tested strategies for Facebook, Instagram, TikTok, LinkedIn and YouTube.';
+        document.querySelector('meta[name="description"]').content = description;
+    }
 
-        // Cookie management
-        function showCookieBanner() {
-            const banner = document.getElementById('cookie-banner');
-            if (!localStorage.getItem('cookieConsent')) {
-                banner.classList.add('show');
+    // Cookie management
+    function showCookieBanner() {
+        const banner = document.getElementById('cookie-banner');
+        if (!localStorage.getItem('cookieConsent')) {
+            banner.classList.add('show');
+        }
+    }
+
+    function acceptCookies() {
+        localStorage.setItem('cookieConsent', 'accepted');
+        document.getElementById('cookie-banner').classList.remove('show');
+    }
+
+    function rejectCookies() {
+        localStorage.setItem('cookieConsent', 'rejected');
+        document.getElementById('cookie-banner').classList.remove('show');
+    }
+
+    // Modal functionality
+    function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+    }
+
+    function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+    }
+
+    // Payment functionality
+    function redirectToPayPal() {
+        const lang = currentLang;
+        // Store language preference for return
+        localStorage.setItem('selectedLang', lang);
+        
+        // PayPal payment link with return URL
+        const returnUrl = encodeURIComponent(`${window.location.origin}/download.html?lang=${lang}&payment=success`);
+        const cancelUrl = encodeURIComponent(`${window.location.origin}/index.html?payment=cancelled`);
+        
+        // Open PayPal payment page
+        window.open('https://www.paypal.com/ncp/payment/MDA7QSJQPVKN4', '_blank');
+        
+        // Show payment instructions
+        showPaymentInstructions('paypal', lang);
+    }
+
+    function redirectToStripe() {
+        const lang = currentLang;
+        // Store language preference for return
+        localStorage.setItem('selectedLang', lang);
+        
+        // Stripe payment link with return URL
+        const returnUrl = encodeURIComponent(`${window.location.origin}/download.html?lang=${lang}&payment=success`);
+        const cancelUrl = encodeURIComponent(`${window.location.origin}/index.html?payment=cancelled`);
+        
+        // Open Stripe payment page - LINK CORRETTO
+        window.open('https://buy.stripe.com/4gM7sL9VsegGbid9bpcEw01', '_blank');
+        
+        // Show payment instructions
+        showPaymentInstructions('stripe', lang);
+    }
+
+    function showPaymentInstructions(provider, lang) {
+        const message = lang === 'it' 
+            ? `Pagamento in corso con ${provider}. Dopo aver completato il pagamento, tornerai automaticamente alla pagina di download.`
+            : `Payment in progress with ${provider}. After completing the payment, you will automatically return to the download page.`;
+        
+        // Create a temporary notification
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #28a745;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            z-index: 10000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            text-align: center;
+            max-width: 400px;
+        `;
+        notification.textContent = message;
+        document.body.appendChild(notification);
+        
+        // Remove notification after 5 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 5000);
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        // Set initial language
+        switchLanguage();
+        switchLanguage(); // Call twice to reset to Italian
+        
+        // Show cookie banner
+        setTimeout(showCookieBanner, 1000);
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
             }
         }
-
-        function acceptCookies() {
-            localStorage.setItem('cookieConsent', 'accepted');
-            document.getElementById('cookie-banner').classList.remove('show');
-        }
-
-        function rejectCookies() {
-            localStorage.setItem('cookieConsent', 'rejected');
-            document.getElementById('cookie-banner').classList.remove('show');
-        }
-
-        // Modal functionality
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        // Payment functionality
-        function redirectToPayPal() {
-            const lang = currentLang;
-            // Store language preference for return
-            localStorage.setItem('selectedLang', lang);
-            
-            // PayPal payment link with return URL
-            const returnUrl = encodeURIComponent(`${window.location.origin}/download.html?lang=${lang}&payment=success`);
-            const cancelUrl = encodeURIComponent(`${window.location.origin}/index.html?payment=cancelled`);
-            
-            // Open PayPal payment page
-            window.open('https://www.paypal.com/ncp/payment/MDA7QSJQPVKN4', '_blank');
-            
-            // Show payment instructions
-            showPaymentInstructions('paypal', lang);
-        }
-
-        function redirectToStripe() {
-            const lang = currentLang;
-            // Store language preference for return
-            localStorage.setItem('selectedLang', lang);
-            
-            // Stripe payment link with return URL
-            const returnUrl = encodeURIComponent(`${window.location.origin}/download.html?lang=${lang}&payment=success`);
-            const cancelUrl = encodeURIComponent(`${window.location.origin}/index.html?payment=cancelled`);
-            
-            // Open Stripe payment page
-            window.open('https://buy.stripe.com/4gM7sL9VsegGbid9AA', '_blank');
-            
-            // Show payment instructions
-            showPaymentInstructions('stripe', lang);
-        }
-
-        function showPaymentInstructions(provider, lang) {
-            const message = lang === 'it' 
-                ? `Pagamento in corso con ${provider}. Dopo aver completato il pagamento, tornerai automaticamente alla pagina di download.`
-                : `Payment in progress with ${provider}. After completing the payment, you will automatically return to the download page.`;
-            
-            // Create a temporary notification
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 100px;
-                left: 50%;
-                transform: translateX(-50%);
-                background: #28a745;
-                color: white;
-                padding: 1rem 2rem;
-                border-radius: 10px;
-                z-index: 10000;
-                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-                text-align: center;
-                max-width: 400px;
-            `;
-            notification.textContent = message;
-            document.body.appendChild(notification);
-            
-            // Remove notification after 5 seconds
-            setTimeout(() => {
-                if (notification.parentNode) {
-                    notification.parentNode.removeChild(notification);
-                }
-            }, 5000);
-        }
-
-        // Initialize when page loads
-        document.addEventListener('DOMContentLoaded', function() {
-            // Set initial language
-            switchLanguage();
-            switchLanguage(); // Call twice to reset to Italian
-            
-            // Show cookie banner
-            setTimeout(showCookieBanner, 1000);
-            
-            // Close modals when clicking outside
-            window.onclick = function(event) {
-                if (event.target.classList.contains('modal')) {
-                    event.target.style.display = 'none';
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+    });
+</script>
