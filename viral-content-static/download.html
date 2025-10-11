@@ -221,9 +221,9 @@
                         <p>Oltre 60 pagine di strategie comprovate, 50 hook formulas, 10 casi studio e tecniche avanzate per dominare i social media.</p>
                     </div>
                 </div>
-                <a href="assets/ViralGuide_ITA.pdf" class="download-btn" download="ViralGuide_ITA.pdf">
+                <button class="download-btn" onclick="forceDownload('assets/ViralGuide_ITA.pdf', 'ViralGuide_ITA.pdf')">
                     📥 Scarica Guida Italiana (PDF)
-                </a>
+                </button>
             </div>
             
             <div class="bonus-section">
@@ -259,9 +259,9 @@
                         <p>Over 60 pages of proven strategies, 50 hook formulas, 10 case studies and advanced techniques to dominate social media.</p>
                     </div>
                 </div>
-                <a href="assets/ViralGuide_ENG.pdf" class="download-btn" download="ViralGuide_ENG.pdf">
+                <button class="download-btn" onclick="forceDownload('assets/ViralGuide_ENG.pdf', 'ViralGuide_ENG.pdf')">
                     📥 Download English Guide (PDF)
-                </a>
+                </button>
             </div>
             
             <div class="bonus-section">
@@ -320,14 +320,44 @@
                 switchLanguage();
             }
             
-            // Track download events
-            document.querySelectorAll('.download-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    // You can add analytics tracking here
-                    console.log('Guide downloaded:', this.href);
-                });
-            });
         });
+
+        // Force download function that works on all browsers (including local files)
+        function forceDownload(url, filename) {
+            try {
+                // Create invisible link element
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.style.display = 'none';
+                
+                // Add to DOM, click, and remove
+                document.body.appendChild(link);
+                link.click();
+                
+                // Clean up after a small delay
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                }, 100);
+                
+                // Show confirmation message
+                setTimeout(() => {
+                    const lang = document.documentElement.lang || 'it';
+                    const message = lang === 'it' 
+                        ? '✅ Download avviato! Controlla la cartella Download del tuo browser.'
+                        : '✅ Download started! Check your browser\'s Download folder.';
+                    alert(message);
+                }, 200);
+                
+            } catch (error) {
+                console.error('Download error:', error);
+                const lang = document.documentElement.lang || 'it';
+                const errorMsg = lang === 'it'
+                    ? '❌ Errore nel download. Riprova o contatta il supporto.'
+                    : '❌ Download error. Please try again or contact support.';
+                alert(errorMsg);
+            }
+        }
     </script>
 </body>
 </html>
